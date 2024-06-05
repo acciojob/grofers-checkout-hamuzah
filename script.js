@@ -4,20 +4,26 @@ document.body.appendChild(getSumBtn);
 
 const getSum = () => {
 //Add your code here
-  let tableEl = document.getElementById('myTable');
-let priceArr = Array.from(document.querySelectorAll("td[data-ns-test]"));
-// console.log(priceArr);
-let totalPrice = 0;
-for (const priceOfEachItem of priceArr) {
-  totalPrice += Number(priceOfEachItem.textContent);
-}
 
-let totalRow = document.createElement('tr');
-let newcell = totalRow.insertCell(0);
-newcell.textContent = totalPrice
-totalRow.setAttribute('data-ns-test', 'grandTotal')
+const priceElements = document.querySelectorAll(".price"); // Get all price elements
+    let totalPrice = 0;
 
-tableEl.insertAdjacentElement('beforeend', totalRow);
+    priceElements.forEach(priceElement => {
+        totalPrice += parseFloat(priceElement.textContent);
+    });
+
+    const totalRow = document.createElement("tr"); // Create a new row for the total
+    const totalCell = document.createElement("td"); // Create a cell for the total
+    totalCell.setAttribute("colspan", "2"); // Set colspan to span both columns
+    totalCell.textContent = "Total Price: " + totalPrice.toFixed(2);
+    totalRow.appendChild(totalCell); // Add the cell to the row
+    totalRow.classList.add("total-row"); // Add a class to style the total row
+
+    const table = document.querySelector("table"); // Get the table
+    table.appendChild(totalRow); // Add the total row to the table
+
+	
+   
 };
 
 getSumBtn.addEventListener("click", getSum);
