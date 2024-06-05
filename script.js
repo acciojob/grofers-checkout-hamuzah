@@ -4,26 +4,20 @@ document.body.appendChild(getSumBtn);
 
 const getSum = () => {
 //Add your code here
-const prices = document.getElementsByClassName('price')
-const pricesArr = Array.from(prices)
-let sum = 0;
-
-pricesArr.forEach((errm)=>{
-     sum += Number.innerText(errm);
-		})	
-
-	 const table=document.getElementsByTagName('table')[0];
-
-  const tr=document.createElement('tr');
-  const td=document.createElement('td');
-
-  td.innerText=`Total Price = ${sum}`;
-  td.colSpan='2';
-	td.id='ans';
-//   td.style.textAlign='justify';
-  tr.append(td);
-  table.append(tr);
-
+ let arr = Array.from(document.querySelectorAll(".price"));
+	let sum = 0;
+	arr.forEach((item)=> {
+		 sum += parseInt(item.innerText);
+	});
+	let row =document.createElement("tr");
+	row.setAttribute('id',"ans");
+	let cell1 = document.createElement("td");
+	cell1.innerText = "Total is: ";
+	let cell2 = document.createElement("td");
+	cell2.innerText = sum;
+	row.appendChild(cell1)
+	row.appendChild(cell2);
+	table.appendChild(row);
 	
 };
 
