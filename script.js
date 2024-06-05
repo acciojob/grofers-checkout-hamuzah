@@ -28,6 +28,7 @@ const getSum = () => {
     
     // Append the new row to the table
     table.appendChild(newRow);
+	 
  
 };
 
