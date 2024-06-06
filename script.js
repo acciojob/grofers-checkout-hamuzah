@@ -4,27 +4,22 @@ document.body.appendChild(getSumBtn);
 
 const getSum = () => {
 //Add your code here
+  const prices = Element.querySelectorAll(".price")
 
-const pricelement = Element.querySelectorAll('.price')
-
-let totalprice = 0;
-
-pricelement.ForEach(pricelements =>{
-	totalprice += parseFloat(pricelements.textcontent)
-});	
-
-const table = document.querySelector('table')
-const newrow = document.createElement('tr')
-const totalvalue = document.createElement('td')
-
-totalvalue.setAttribute('colspan', 2)
-totalvalue.textcontent = 'Total Price: ${totalprice}'	
-
-newrow.append(totalvalue)
-
-table.appendChild(newrow);
+  const total_price = 0;
+  prices.forEach(price => {
+	  total_price += parseInt(price.textContent) 
+  });
+	//creating the table
 	
-	 
+  const tablerow = Document.createElement("tr");
+  const tablecell = Document.createElement("td");
+	
+  tablecell.colspan = 2;
+  tablecell.textContent = total_price;
+  tablerow.appendChild(tablecell);
+  Document.getElementById("table").appendChild(tablecell);	
+ 	 
 };
 
 getSumBtn.addEventListener("click", getSum);
